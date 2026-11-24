@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rumbo al examen · Prepara tu titulación náutica desde el móvil</title>
+<meta name="description" content="Elige tu examen náutico y practica con el temario al día, los exámenes oficiales y lo que siempre cae. Empieza por el PPER.">
+<meta property="og:title" content="Rumbo al examen">
+<meta property="og:description" content="Prepara tu titulación náutica con el temario al día, en el móvil.">
+<meta property="og:image" content="https://rumboalexamen.es/captura-pper.jpg">
+<meta property="og:url" content="https://rumboalexamen.es/">
+<meta name="theme-color" content="#142236">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800&family=Spectral:ital,wght@1,500;1,600;1,700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #142236; --navy-2: #0E1A2B; --ink: #142236; --ink-2: #4A5B6E; --ink-3: #7A8A9A;
+    --water: #DCEBF2; --water-2: #C6DEEA; --bg: #F7F9F8; --rule: #D6E0E7;
+    --magenta: #B0207A; --magenta-soft: #F6E3EE; --ok: #1F7A4D; --ok-soft: #DFF1E6; --gold: #B7860B;
+    --serif: 'Spectral', Georgia, serif; --ui: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--ui); color: var(--ink); background: var(--bg); -webkit-font-smoothing: antialiased; }
+  a { color: inherit; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+  /* cabecera */
+  header { position: sticky; top: 0; z-index: 10; background: rgba(247,249,248,.86); backdrop-filter: blur(10px); border-bottom: 1px solid var(--rule); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .marca { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .marca img { width: 34px; height: 34px; border-radius: 9px; }
+  .marca span { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 23px; }
+  header nav a { text-decoration: none; font-weight: 700; font-size: 15px; padding: 10px 18px; border-radius: 999px; background: var(--magenta); color: white; }
+
+  /* portada */
+  .hero { position: relative; overflow: hidden; background:
+      linear-gradient(rgba(198,222,234,.55) 1px, transparent 1px) 0 0 / 44px 44px,
+      linear-gradient(90deg, rgba(198,222,234,.55) 1px, transparent 1px) 0 0 / 44px 44px,
+      var(--water); border-bottom: 1px solid var(--water-2); }
+  .hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; padding-top: 64px; padding-bottom: 64px; }
+  .rosa { position: absolute; right: -140px; top: -120px; width: 520px; opacity: .22; pointer-events: none; }
+  .etiqueta { display: inline-block; font-weight: 700; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--magenta); background: white; border: 1px solid var(--magenta-soft); padding: 7px 14px; border-radius: 999px; }
+  h1 { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: clamp(40px, 6vw, 68px); line-height: 1.02; margin: 18px 0 18px; letter-spacing: -.01em; }
+  h1 em { color: var(--magenta); font-style: italic; }
+  .hero p.lead { font-size: 20px; line-height: 1.5; color: var(--ink-2); max-width: 34em; margin: 0 0 28px; }
+  .botones { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-weight: 800; font-size: 17px; text-decoration: none; padding: 16px 26px; border-radius: 14px; border: 0; cursor: pointer; transition: transform .15s ease, box-shadow .15s ease; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-p { background: var(--magenta); color: white; box-shadow: 0 12px 26px -12px rgba(176,32,122,.7); }
+  .btn-s { background: white; color: var(--ink); border: 1px solid var(--rule); }
+  .telefono { justify-self: center; width: min(320px, 100%); border-radius: 44px; padding: 10px; background: linear-gradient(145deg, #2B3A50, #0A1019 45%, #1A2638); box-shadow: 0 40px 80px -30px rgba(20,34,54,.6); transform: rotate(2.5deg); }
+  .telefono img { display: block; width: 100%; border-radius: 35px; }
+
+  /* secciones */
+  section { padding: 72px 0; }
+  h2 { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: clamp(32px, 4.4vw, 46px); line-height: 1.08; margin: 0 0 12px; }
+  .sub { color: var(--ink-2); font-size: 18px; margin: 0 0 36px; max-width: 40em; line-height: 1.5; }
+
+  /* selector de examen */
+  .examenes { display: grid; grid-template-columns: repeat(auto-fit, minmax(192px, 1fr)); gap: 16px; }
+  .examen { position: relative; display: flex; flex-direction: column; background: white; border: 1px solid var(--rule); border-radius: 22px; padding: 26px 24px 24px; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
+  .examen.activo { border: 2px solid var(--magenta); box-shadow: 0 20px 40px -24px rgba(176,32,122,.55); }
+  .examen.activo:hover { transform: translateY(-4px); box-shadow: 0 26px 50px -24px rgba(176,32,122,.65); }
+  .examen .sigla { font-family: var(--serif); font-style: italic; font-weight: 700; font-size: 44px; line-height: 1; }
+  .examen .nombre { font-weight: 700; font-size: 17px; margin: 8px 0 10px; }
+  .examen .desc { color: var(--ink-2); font-size: 15px; line-height: 1.45; flex: 1; margin: 0 0 18px; }
+  .estado { align-self: flex-start; font-weight: 800; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; }
+  .estado.si { background: var(--ok-soft); color: var(--ok); }
+  .estado.no { background: var(--bg); color: var(--ink-3); border: 1px solid var(--rule); }
+  .examen .ir { margin-top: 14px; font-weight: 800; color: var(--magenta); font-size: 16px; }
+  .examen.proximo { opacity: .72; }
+  .examen.proximo .sigla { color: var(--ink-3); }
+
+  /* qué tiene */
+  .claves { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; }
+  .clave { background: white; border: 1px solid var(--rule); border-radius: 20px; padding: 24px; }
+  .clave .ico { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; background: var(--magenta-soft); color: var(--magenta); font-size: 22px; margin-bottom: 14px; }
+  .clave h3 { margin: 0 0 6px; font-size: 19px; }
+  .clave p { margin: 0; color: var(--ink-2); line-height: 1.5; font-size: 15.5px; }
+
+  /* historia */
+  .historia { background: var(--navy); color: white; }
+  .historia .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .historia h2 { color: white; }
+  .historia p { color: var(--water); font-size: 18px; line-height: 1.6; margin: 0 0 14px; }
+  .aptos { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .apto { width: 130px; height: 130px; border-radius: 50%; background: var(--water); display: grid; place-items: center; position: relative; }
+  .apto b { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%) rotate(-8deg); background: var(--navy-2); color: #3FBF7F; border: 3px solid #3FBF7F; border-radius: 8px; font-weight: 800; letter-spacing: .08em; padding: 3px 10px; font-size: 15px; }
+
+  /* cierre */
+  .cierre { text-align: center; }
+  .cierre .sub { margin-left: auto; margin-right: auto; }
+
+  footer { border-top: 1px solid var(--rule); padding: 30px 0 40px; color: var(--ink-3); font-size: 14px; line-height: 1.6; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+  @media (max-width: 820px) {
+    .hero .wrap, .historia .wrap { grid-template-columns: 1fr; }
+    .hero .wrap { padding-top: 40px; }
+    .telefono { width: 260px; transform: rotate(0); }
+    section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="marca" href="#"><img src="icon.svg" alt=""><span>Rumbo al examen</span></a>
+    <nav><a href="#examenes">Elige tu examen</a></nav>
+  </div>
+</header>
+
+<div class="hero">
+  <svg class="rosa" viewBox="0 0 200 200" aria-hidden="true">
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#142236" stroke-width="1"/>
+    <g fill="#142236">
+      <path d="M100 4L106 100H94z"/><path d="M100 196L106 100H94z"/><path d="M4 100L100 94V106z"/><path d="M196 100L100 94V106z"/>
+      <path d="M100 100L40 40L104 96z" opacity=".6"/><path d="M100 100L160 40L96 96z" opacity=".6"/><path d="M100 100L40 160L104 104z" opacity=".6"/><path d="M100 100L160 160L96 104z" opacity=".6"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div>
+      <span class="etiqueta">Titulaciones náuticas</span>
+      <h1>Tu examen náutico, <em>con el temario al día</em> y en el móvil.</h1>
+      <p class="lead">Estudia los temas con la normativa vigente, practica con los exámenes oficiales de verdad y aprende lo que siempre cae. A tu ritmo, donde estés, incluso sin conexión.</p>
+      <div class="botones">
+        <a class="btn btn-p" href="#examenes">Elige tu examen →</a>
+        <a class="btn btn-s" href="#como">Cómo funciona</a>
+      </div>
+    </div>
+    <div class="telefono"><img src="captura-pper.jpg" alt="La app Rumbo al PPER en un móvil: días para el examen, millas, temas aprobados y la ruta de estudio"></div>
+  </div>
+</div>
+
+<section id="examenes">
+  <div class="wrap">
+    <h2>¿Para qué examen te preparas?</h2>
+    <p class="sub">Elige tu titulación y entra a practicar. Empezamos por el PPER; el resto de exámenes van llegando.</p>
+    <div class="examenes">
+      <a class="examen activo" href="https://pper.rumboalexamen.es/">
+        <div class="sigla">PPER</div>
+        <div class="nombre">Patrón Profesional de Embarcaciones de Recreo</div>
+        <p class="desc">Los 19 temas del examen, 15 convocatorias oficiales completas y lo que más se repite, pregunta a pregunta.</p>
+        <span class="estado si">Disponible</span>
+        <span class="ir">Practicar el PPER →</span>
+      </a>
+      <div class="examen proximo">
+        <div class="sigla">CY</div>
+        <div class="nombre">Capitán de Yate</div>
+        <p class="desc">La titulación de recreo más alta. Mismo método: temario al día y exámenes oficiales.</p>
+        <span class="estado no">Próximamente</span>
+      </div>
+      <div class="examen proximo">
+        <div class="sigla">PY</div>
+        <div class="nombre">Patrón de Yate</div>
+        <p class="desc">Teoría, cálculos de navegación y exámenes oficiales para practicar.</p>
+        <span class="estado no">Próximamente</span>
+      </div>
+      <div class="examen proximo">
+        <div class="sigla">PER</div>
+        <div class="nombre">Patrón de Embarcaciones de Recreo</div>
+        <p class="desc">El título más pedido. Prepáralo con tests oficiales y repaso de tus fallos.</p>
+        <span class="estado no">Próximamente</span>
+      </div>
+      <div class="examen proximo">
+        <div class="sigla">PNB</div>
+        <div class="nombre">Patrón de Navegación Básica</div>
+        <p class="desc">Para empezar a navegar: lo esencial, explicado claro y con práctica.</p>
+        <span class="estado no">Próximamente</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como" style="padding-top:0">
+  <div class="wrap">
+    <h2>Así se prepara un examen aquí</h2>
+    <p class="sub">Nada de apuntes que se quedan viejos: cada tema está escrito con la normativa vigente, y te avisa cuando una pregunta antigua ya no vale.</p>
+    <div class="claves">
+      <div class="clave"><div class="ico">⚓</div><h3>Temas en etapas cortas</h3><p>Fichas, verdadero o falso contra el reloj, parejas, cifras clave y un examen por tema. Aprendes jugando, poco a poco.</p></div>
+      <div class="clave"><div class="ico">★</div><h3>Lo que siempre cae</h3><p>Qué se pregunta en cada número del examen y qué preguntas se repiten. Ideal si vas con poco tiempo.</p></div>
+      <div class="clave"><div class="ico">⏱</div><h3>Exámenes oficiales</h3><p>Las convocatorias reales completas, con su reloj y su corrección, como el día del examen.</p></div>
+      <div class="clave"><div class="ico">↻</div><h3>Repasa tus fallos</h3><p>Lo que fallas vuelve hasta que lo aciertas. Y en la bitácora ves cuánto te queda.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="historia">
+  <div class="wrap">
+    <div>
+      <h2>Tres amigos, un reto… y tres aprobados</h2>
+      <p>Nos presentamos al PPER y nuestros apuntes traían normas ya derogadas. Así que nos pusimos un reto: tener todo el temario actualizado, a mano, en el móvil.</p>
+      <p>Así nació Rumbo al PPER. Estudiamos con ella y aprobamos los tres. Ahora la abrimos para ti, y vamos a por el resto de titulaciones.</p>
+    </div>
+    <div class="aptos" aria-hidden="true">
+      <div class="apto"><svg width="90" height="90" viewBox="0 0 200 200"><circle cx="100" cy="96" r="44" fill="#F1C7A0"/><path d="M54 70Q60 34 100 32Q140 34 146 70Z" fill="#fff"/><rect x="50" y="64" width="100" height="14" rx="7" fill="#142236"/><circle cx="100" cy="52" r="7" fill="#F6C700"/><circle cx="84" cy="98" r="5" fill="#1b1b1b"/><circle cx="116" cy="98" r="5" fill="#1b1b1b"/><path d="M86 114Q100 126 114 114" stroke="#7a3b2a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M30 200Q34 146 100 140Q166 146 170 200Z" fill="#B0207A"/></svg><b>APTO</b></div>
+      <div class="apto"><svg width="90" height="90" viewBox="0 0 200 200"><path d="M52 92Q50 150 70 160L130 160Q150 150 148 92Z" fill="#151515"/><circle cx="100" cy="96" r="44" fill="#D69E74"/><path d="M54 70Q60 34 100 32Q140 34 146 70Z" fill="#fff"/><rect x="50" y="64" width="100" height="14" rx="7" fill="#142236"/><circle cx="100" cy="52" r="7" fill="#F6C700"/><circle cx="84" cy="98" r="5" fill="#1b1b1b"/><circle cx="116" cy="98" r="5" fill="#1b1b1b"/><path d="M86 114Q100 126 114 114" stroke="#7a3b2a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M30 200Q34 146 100 140Q166 146 170 200Z" fill="#0B4EA2"/></svg><b>APTO</b></div>
+      <div class="apto"><svg width="90" height="90" viewBox="0 0 200 200"><circle cx="100" cy="96" r="44" fill="#E6B48A"/><path d="M54 70Q60 34 100 32Q140 34 146 70Z" fill="#fff"/><rect x="50" y="64" width="100" height="14" rx="7" fill="#142236"/><circle cx="100" cy="52" r="7" fill="#F6C700"/><circle cx="84" cy="98" r="5" fill="#1b1b1b"/><circle cx="116" cy="98" r="5" fill="#1b1b1b"/><path d="M86 114Q100 126 114 114" stroke="#7a3b2a" stroke-width="4" fill="none" stroke-linecap="round"/><path d="M30 200Q34 146 100 140Q166 146 170 200Z" fill="#1F7A4D"/></svg><b>APTO</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="wrap">
+    <h2>¿Empezamos?</h2>
+    <p class="sub">Entra, crea tu cuenta y tu progreso se guarda en todos tus dispositivos.</p>
+    <a class="btn btn-p" href="https://pper.rumboalexamen.es/">Practicar el PPER →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Rumbo al examen</span>
+    <span>App de estudio no oficial. Las preguntas oficiales proceden de las convocatorias publicadas por el Ministerio de Transportes y Movilidad Sostenible.</span>
+  </div>
+</footer>
+
+</body>
+</html>
